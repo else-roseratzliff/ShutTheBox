@@ -1,5 +1,5 @@
 // global variables initiated
-var rand, rand2, total, selectCount=0; player=1, games=0, previousTotal
+var rand, rand2, total, selectCount=0, player=1, games=0, previousTotal;
 
 //making new arrays to hold total tile value and score of leftover tiles
 tileTotal = new Array();
@@ -26,9 +26,8 @@ function select(obj) {
     for (var i=0; i<tileTotal.length; i++) {
         tempTotal += tileTotal[i];
     }
-    alert(tempTotal);
 
-    if (tempTotal<=total) {
+    if (tempTotal<total) {
         img.style.visibility="hidden";
 
         //change the array holding current tiles
@@ -49,6 +48,7 @@ function select(obj) {
 
         //make our temporary tileTotal back to empty and reset selectCount to zero.  tileTotal = Array();
         selectCount=0;
+        getScore();
     }
             
     else    {alert(tempTotal+" is a total beyond your roll.")}
@@ -71,8 +71,9 @@ function roll(){
     
     //get new totals of dice
     total = rand+rand2;
-    console.log(total, path, path2)
-};
+    $("#reset").show();
+    $("#endBtn").show();
+}
     
 
     // get the current score, make sure we add 'score' to var list at top
